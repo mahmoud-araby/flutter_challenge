@@ -7,8 +7,9 @@ class Email extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       onSaved: (String emailAddress) {
-        Provider.of<CourseController>(context).courseReservation.emailAddress =
-            emailAddress;
+        Provider.of<CourseController>(context, listen: false)
+            .courseReservation
+            .emailAddress = emailAddress;
       },
       validator: emailValidator,
       decoration: InputDecoration(

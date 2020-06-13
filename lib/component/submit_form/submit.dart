@@ -13,7 +13,7 @@ class SubmitForm extends StatelessWidget {
         'Submit',
         textAlign: TextAlign.center,
       ),
-      onPressed: submit,
+      onPressed: () => submit(context),
     );
   }
 }

@@ -7,8 +7,9 @@ class PhoneNumber extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       onSaved: (String phoneNumber) {
-        Provider.of<CourseController>(context).courseReservation.phoneNumber =
-            phoneNumber;
+        Provider.of<CourseController>(context, listen: false)
+            .courseReservation
+            .phoneNumber = phoneNumber;
       },
       validator: numberValidator,
       decoration: InputDecoration(

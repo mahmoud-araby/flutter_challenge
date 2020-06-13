@@ -7,7 +7,9 @@ class Name extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       onSaved: (String name) {
-        Provider.of<CourseController>(context).courseReservation.name = name;
+        Provider.of<CourseController>(context, listen: false)
+            .courseReservation
+            .name = name;
       },
       validator: nameValidator,
       decoration: InputDecoration(

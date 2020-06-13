@@ -4,31 +4,41 @@ import 'package:tech/component/submit_form/name.dart';
 import 'package:tech/component/submit_form/phoneNumber.dart';
 import 'package:tech/component/submit_form/submit.dart';
 
-class CourseReservation extends StatelessWidget {
+import 'confirmation.dart';
+
+class ReservationForm extends StatelessWidget {
   final GlobalKey<FormState> _submitKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
       children: <Widget>[
-        Form(
-          key: _submitKey,
-          child: Column(
-            children: <Widget>[
-              Name(),
-              PhoneNumber(),
-              Email(),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: SubmitForm(submitForm),
-              ),
-            ],
+        Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Form(
+            key: _submitKey,
+            child: Column(
+              children: <Widget>[
+                Name(),
+                PhoneNumber(),
+                Email(),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: SubmitForm(submitForm),
+                ),
+              ],
+            ),
           ),
         ),
       ],
     );
   }
 
-  submitForm() {
-    if (_submitKey.currentState.validate()) _submitKey.currentState.save();
+  submitForm(BuildContext context) {
+    if (_submitKey.currentState.validate()) {
+      _submitKey.currentState.save();
+      showDialog(context: context, builder: (context) => ConfirmSubmit());
+
+      /// add the confirm here
+    }
   }
 }

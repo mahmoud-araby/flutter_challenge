@@ -3,10 +3,10 @@ import 'package:tech/backend/modules/trainer_module.dart';
 class Course {
   int id;
   String title;
-  List<String> images;
+  List images;
   String interest;
-  double price;
-  String date;
+  int price;
+  DateTime date;
   String occasionDetail;
   Trainer trainer;
   String latitude;
@@ -48,7 +48,7 @@ class Course {
     this.images = imagesFormJson(jsonFile);
     this.interest = jsonFile['interest'];
     this.price = jsonFile['price'];
-    this.date = jsonFile['date'];
+    this.date = DateTime.parse(jsonFile['date']);
     this.occasionDetail = jsonFile['occasionDetail'];
     this.trainer = Trainer.fromJson(jsonFile);
     this.latitude = jsonFile['latitude'];
@@ -65,14 +65,8 @@ class Course {
   }
 
   Function(Map) get imagesFormJson => (Map jsonFile) {
-        List<String> ret = [];
-        jsonFile.forEach((img, imageSource) {
-          ret.add(imageSource);
-        });
+        List ret = [];
+        ret = jsonFile['img'];
         return ret;
-      };
-
-  Function get changeLike => () {
-        this.isLiked = !this.isLiked;
       };
 }

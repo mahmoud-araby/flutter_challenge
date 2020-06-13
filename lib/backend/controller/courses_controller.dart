@@ -6,7 +6,7 @@ import 'package:tech/backend/network/network_helper.dart';
 
 class CourseController extends ChangeNotifier {
   CourseController() {
-    CourseController();
+    getCourseDetails();
   }
 
   bool isBusy = false;
@@ -17,7 +17,7 @@ class CourseController extends ChangeNotifier {
 
   GlobalKey<ScaffoldState> get coursesPageState => detailPageScaffold;
 
-  getCourseDetails() async {
+  Future<void> getCourseDetails() async {
     isBusy = true;
     notifyListeners();
     Map response = await Network.getCourse();
@@ -33,8 +33,6 @@ class CourseController extends ChangeNotifier {
 
   Future<bool> resrveCourse() async {
     bool ret;
-    isBusy = true;
-    notifyListeners();
     Map response = await Network.resrveCourse(courseReservation);
     if (response.containsKey('error')) {
       showErrorSnackBar(response);
@@ -42,8 +40,6 @@ class CourseController extends ChangeNotifier {
     } else {
       ret = true;
     }
-    isBusy = false;
-    notifyListeners();
     return ret;
   }
 
@@ -61,4 +57,9 @@ class CourseController extends ChangeNotifier {
   shareCourse() {
     Share.share('check out This Course  \"CourseLink\"');
   }
+
+  Function get changeLike => () {
+        courseData.isLiked = !courseData.isLiked;
+        notifyListeners();
+      };
 }
