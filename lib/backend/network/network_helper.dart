@@ -28,9 +28,19 @@ class Network {
   }
 
   // ignore: missing_return
-  static Future<Map<String, dynamic>> resrveCourse(CourseReservation response) {
+  static Future<Map<String, dynamic>> resrveCourse(
+      CourseReservation response) async {
+    Map<String, dynamic> ret;
     Map data = response.toMap();
-
-    /// send data to backend for course reservation
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.none) {
+      ret = ConnectionError;
+    } else {
+      /// send data to backend for course reservation
+      /// for demonstration purpose delay is presented here
+      await Future.delayed(Duration(seconds: 4));
+      ret = {'isOk': 'ok'};
+    }
+    return ret;
   }
 }

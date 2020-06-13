@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 import 'package:tech/backend/modules/course_module.dart';
 import 'package:tech/backend/modules/respone_module.dart';
 import 'package:tech/backend/network/network_helper.dart';
@@ -11,7 +12,8 @@ class CourseController extends ChangeNotifier {
   bool isBusy = false;
   Course courseData;
   CourseReservation courseReservation;
-  GlobalKey<ScaffoldState> detailPageScaffold = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> detailPageScaffold =
+      GlobalKey<ScaffoldState>();
 
   GlobalKey<ScaffoldState> get coursesPageState => detailPageScaffold;
 
@@ -54,5 +56,9 @@ class CourseController extends ChangeNotifier {
         duration: Duration(seconds: 3),
       ),
     );
+  }
+
+  shareCourse() {
+    Share.share('check out This Course  \"CourseLink\"');
   }
 }
