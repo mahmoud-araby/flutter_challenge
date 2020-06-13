@@ -3,7 +3,7 @@ class CourseReservation {
   String phoneNumber;
   String emailAddress;
 
-  CourseReservation(this.name, this.phoneNumber, this.emailAddress);
+  CourseReservation({this.name, this.phoneNumber, this.emailAddress});
 
   Map<String, dynamic> toMap() {
     return {

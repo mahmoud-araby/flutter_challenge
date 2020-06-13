@@ -25,3 +25,10 @@ class CourseDetailPage extends StatelessWidget {
     );
   }
 }
+
+class CoursePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView();
+  }
+}

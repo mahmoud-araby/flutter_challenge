@@ -11,7 +11,7 @@ class CourseController extends ChangeNotifier {
 
   bool isBusy = false;
   Course courseData;
-  CourseReservation courseReservation;
+  CourseReservation courseReservation = CourseReservation();
   final GlobalKey<ScaffoldState> detailPageScaffold =
       GlobalKey<ScaffoldState>();
 
