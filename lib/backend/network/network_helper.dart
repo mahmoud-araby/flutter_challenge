@@ -2,11 +2,12 @@ import 'dart:convert';
 
 import 'package:connectivity/connectivity.dart';
 import 'package:http/http.dart' as http;
+import 'package:tech/backend/modules/respone_module.dart';
 
 import '../../config.dart';
 
 class Network {
-  Future<Map<String, dynamic>> getCourse() async {
+  static Future<Map<String, dynamic>> getCourse() async {
     Map<String, dynamic> ret;
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
@@ -24,5 +25,12 @@ class Network {
       }
     }
     return ret;
+  }
+
+  // ignore: missing_return
+  static Future<Map<String, dynamic>> resrveCourse(CourseReservation response) {
+    Map data = response.toMap();
+
+    /// send data to backend for course reservation
   }
 }

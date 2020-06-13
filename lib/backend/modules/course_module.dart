@@ -71,4 +71,8 @@ class Course {
         });
         return ret;
       };
+
+  Function get changeLike => () {
+        this.isLiked = !this.isLiked;
+      };
 }
