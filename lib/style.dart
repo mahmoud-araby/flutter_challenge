@@ -1,26 +1,53 @@
 import 'package:flutter/material.dart';
 
-const MainText = TextStyle();
-const TitleText = TextStyle();
-const HeadingText = TextStyle();
-const ButtonStyle = TextStyle();
+const MainText = TextStyle(
+  color: Color(0xFFb9bed1),
+  fontSize: 16,
+  fontFamily: 'CairoSemiBold',
+);
 
-const MainPadding = EdgeInsets.symmetric(horizontal: 12.0);
-const CategoryPadding = EdgeInsets.only(bottom: 8.0);
+const ConfirmationText = TextStyle(
+  color: Color(0xFFBBC0CE),
+  fontSize: 16,
+  fontFamily: 'CairoBold',
+);
 
-const DividerThickness = 2.0;
-const DividerPadding = 12.0;
+const TitleText = TextStyle(
+    color: Color(0xFF9ea3b8),
+    fontWeight: FontWeight.bold,
+    fontSize: 22,
+    fontFamily: 'CairoBold');
+
+const HeadingText = TextStyle(
+    color: Color(0XFFB8BAD1),
+    fontWeight: FontWeight.bold,
+    fontSize: 18,
+    fontFamily: 'CairoBold');
+
+const ButtonStyle = TextStyle(
+  color: Colors.white,
+  fontSize: 18,
+  fontFamily: 'CairoSemiBold',
+);
+
+const MainPadding = EdgeInsets.symmetric(horizontal: 18.0);
+const CategoryPadding = EdgeInsets.only(bottom: 1.0);
+
+const DividerThickness = 1.4;
+const DividerPadding = 4.0;
 
 const IconSpace = 6.0;
-const IconColor = Colors.grey;
-const TopIconColor = Colors.blue;
+const IconColor = Color(0xFFBBC0CE);
+const OnImageIconColor = Colors.white;
 
-const Info = "about";
-const Cost = "cost";
-const OrdinaryCost = "OrdinaryCost";
-const Reservation = "Reservation";
+const Info = "عن الدورة";
+const Cost = "تكلفة الدورة";
+const OrdinaryCost = "الحجز العادى";
+const Reservation = "قم بالحجز الآن";
+const Done = "تم الحجز بنجاح";
+const UnDone = "حاول فى وقت لاحق";
 
-ThemeData appTheme = ThemeData(
-  accentColor: Colors.redAccent,
-  primaryColor: Colors.red,
+ThemeData appTheme = ThemeData.light().copyWith(
+  accentColor: Color(0xFF8A3CA1),
+  primaryColor: Color(0xFFBBC0CE),
 );

@@ -43,7 +43,7 @@ class CourseController extends ChangeNotifier {
     return ret;
   }
 
-  void showErrorSnackBar(Map<String, String> error) {
+  void showErrorSnackBar(Map error) {
     detailPageScaffold.currentState.showSnackBar(
       SnackBar(
         content: Text(

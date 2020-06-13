@@ -4,7 +4,7 @@ class Trainer {
   String info;
   Trainer({this.name, this.image, this.info});
 
-  factory Trainer.fromJson(Map<String, dynamic> jsonFile) {
+  factory Trainer.fromJson(Map jsonFile) {
     return Trainer(
         name: jsonFile['trainerName'] ?? '',
         image: jsonFile['trainerImg'] ?? '',

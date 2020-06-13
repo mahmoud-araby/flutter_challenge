@@ -16,7 +16,7 @@ class CourseDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: Provider.of<CourseController>(context).coursesPageState,
+      key: Provider.of<CourseController>(context).detailPageScaffold,
       body: Consumer<CourseController>(
         builder: (context, course, child) {
           if (course.isBusy) {
@@ -40,17 +40,34 @@ class CoursePage extends StatelessWidget {
     return Consumer<CourseController>(
       builder: (context, course, child) => RefreshIndicator(
         onRefresh: course.getCourseDetails,
-        child: ListView(
-          children: <Widget>[
-            CourseImages(),
-            CourseHeading(),
-            divider(),
-            TrainerInfo(),
-            divider(),
-            AboutCourse(),
-            divider(),
-            CoursePrice(),
-            ReservationButton(),
+        child: CustomScrollView(
+          physics: NeverScrollableScrollPhysics(),
+          slivers: <Widget>[
+            SliverAppBar(
+              expandedHeight: 240,
+              flexibleSpace: FlexibleSpaceBar(
+                background: CourseImages(),
+              ),
+            ),
+            SliverFixedExtentList(
+              itemExtent: MediaQuery.of(context).size.height - 250,
+              delegate: SliverChildListDelegate([
+                SingleChildScrollView(
+                  child: Column(
+                    children: <Widget>[
+                      CourseHeading(),
+                      divider(),
+                      TrainerInfo(),
+                      divider(),
+                      AboutCourse(),
+                      divider(),
+                      CoursePrice(),
+                      ReservationButton(),
+                    ],
+                  ),
+                ),
+              ]),
+            ),
           ],
         ),
       ),

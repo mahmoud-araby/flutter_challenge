@@ -42,7 +42,7 @@ class Course {
       this.questExplanation,
       this.reservTypes);
 
-  Course.fromJson(Map<String, dynamic> jsonFile) {
+  Course.fromJson(Map jsonFile) {
     this.id = jsonFile['id'];
     this.title = jsonFile['title'];
     this.images = imagesFormJson(jsonFile);
@@ -53,7 +53,7 @@ class Course {
     this.trainer = Trainer.fromJson(jsonFile);
     this.latitude = jsonFile['latitude'];
     this.longitude = jsonFile['longitude'];
-    this.address = jsonFile['Address'];
+    this.address = jsonFile['address'];
     this.isLiked = jsonFile['isLiked'];
     this.isSold = jsonFile['isSold'];
     this.isPrivate = jsonFile['isPrivateEvent'];

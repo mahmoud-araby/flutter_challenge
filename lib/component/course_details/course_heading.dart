@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:tech/backend/controller/courses_controller.dart';
 
@@ -10,17 +11,14 @@ class CourseHeading extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<CourseController>(
       builder: (context, course, child) => Padding(
-        padding: MainPadding,
+        padding: MainPadding.copyWith(top: 5),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Padding(
-              padding: CategoryPadding,
-              child: Text(
-                '# ${course.courseData.interest}',
-                style: MainText,
-              ),
+            Text(
+              '# ${course.courseData.interest}',
+              style: MainText,
             ),
             Padding(
               padding: CategoryPadding,
@@ -31,10 +29,13 @@ class CourseHeading extends StatelessWidget {
             ),
             Padding(
               padding: CategoryPadding,
-              child: textWithIcon(Icons.calendar_today,
-                  course.courseData.date.toIso8601String()),
+              child: textWithIcon(
+                  Icons.calendar_today,
+                  DateFormat('E، dd mmm، kk:mm')
+                      .format(course.courseData.date)
+                      .toString()),
             ),
-            textWithIcon(Icons.pin_drop, course.courseData.title),
+            textWithIcon(Icons.pin_drop, course.courseData.address),
           ],
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:carousel_pro/carousel_pro.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tech/backend/controller/courses_controller.dart';
@@ -16,7 +17,6 @@ class CourseImages extends StatelessWidget {
           children: <Widget>[
             SizedBox(
               width: double.infinity,
-              height: 200,
               child: Carousel(
                 images: course.courseData.images
                     .map(
@@ -35,42 +35,48 @@ class CourseImages extends StatelessWidget {
                 dotBgColor: Colors.transparent,
               ),
             ),
-            Align(
-              alignment: Alignment.topLeft,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  IconButton(
-                    icon: isLikedIcon(context),
-                    color: TopIconColor,
-                    onPressed: course.changeLike,
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.share),
-                    color: TopIconColor,
-                    onPressed: course.shareCourse,
-                  ),
-                ],
+            SafeArea(
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    IconButton(
+                      icon: Icon(Icons.share),
+                      color: OnImageIconColor,
+                      onPressed: course.shareCourse,
+                    ),
+                    IconButton(
+                      icon: isLikedIcon(context),
+                      color: OnImageIconColor,
+                      onPressed: course.changeLike,
+                    ),
+                  ],
+                ),
               ),
             ),
-            Align(
-              alignment: Alignment.topRight,
-              child: IconButton(
-                icon: Icon(
-                  Icons.keyboard_arrow_right,
-                  size: 32,
-                  color: TopIconColor,
+            SafeArea(
+              child: Align(
+                alignment: Alignment.topRight,
+                child: IconButton(
+                  icon: Icon(
+                    Icons.keyboard_arrow_right,
+                    size: 32,
+                    color: OnImageIconColor,
+                  ),
+                  onPressed: () async {
+                    showCupertinoDialog(
+                        context: context,
+                        builder: (context) => CupertinoAlertDialog(
+                              content:
+                                  Center(child: Text('للعوده للصفحه السابقه')),
+                            ));
+                    await Future.delayed(Duration(seconds: 2));
+                    Navigator.pop(context);
+                  },
                 ),
-                onPressed: () {
-                  showDialog(
-                      context: context,
-                      child: SimpleDialog(
-                        children: <Widget>[
-                          Text('This Takes you to last Page'),
-                        ],
-                      ));
-                },
               ),
             ),
           ],

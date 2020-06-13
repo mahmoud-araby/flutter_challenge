@@ -11,6 +11,7 @@ class ReservationForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
+      elevation: 15,
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.all(12.0),
@@ -34,11 +35,10 @@ class ReservationForm extends StatelessWidget {
   }
 
   submitForm(BuildContext context) {
-    if (_submitKey.currentState.validate()) {
-      _submitKey.currentState.save();
-      showDialog(context: context, builder: (context) => ConfirmSubmit());
-
-      /// add the confirm here
-    }
+    //  if (_submitKey.currentState.validate()) {
+    _submitKey.currentState.save();
+    Navigator.pop(context);
+    showDialog(context: context, builder: (context) => ConfirmSubmit());
+    //  }
   }
 }
