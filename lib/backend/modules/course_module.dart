@@ -43,25 +43,25 @@ class Course {
       this.reservTypes);
 
   Course.fromJson(Map jsonFile) {
-    this.id = jsonFile['id'];
-    this.title = jsonFile['title'];
-    this.images = imagesFormJson(jsonFile);
-    this.interest = jsonFile['interest'];
-    this.price = jsonFile['price'];
-    this.date = DateTime.parse(jsonFile['date']);
-    this.occasionDetail = jsonFile['occasionDetail'];
-    this.trainer = Trainer.fromJson(jsonFile);
-    this.latitude = jsonFile['latitude'];
-    this.longitude = jsonFile['longitude'];
-    this.address = jsonFile['address'];
-    this.isLiked = jsonFile['isLiked'];
-    this.isSold = jsonFile['isSold'];
-    this.isPrivate = jsonFile['isPrivateEvent'];
-    this.hiddenCashPayment = jsonFile['hiddenCashPayment'];
-    this.specialForm = jsonFile['specialForm'];
-    this.questionnaire = jsonFile['questionnaire'];
-    this.questExplanation = jsonFile['questExplanation'];
-    this.reservTypes = jsonFile['reservTypes'][0];
+    this.id = jsonFile['id'] ?? 0;
+    this.title = jsonFile['title'] ?? '';
+    this.images = imagesFormJson(jsonFile) ?? [];
+    this.interest = jsonFile['interest'] ?? '';
+    this.price = jsonFile['price'] ?? 0;
+    this.date = DateTime.parse(jsonFile['date']) ?? DateTime.parse('');
+    this.occasionDetail = jsonFile['occasionDetail'] ?? '';
+    this.trainer = Trainer.fromJson(jsonFile) ?? Trainer();
+    this.latitude = jsonFile['latitude'] ?? '0';
+    this.longitude = jsonFile['longitude'] ?? '0';
+    this.address = jsonFile['address'] ?? '';
+    this.isLiked = jsonFile['isLiked'] ?? false;
+    this.isSold = jsonFile['isSold'] ?? false;
+    this.isPrivate = jsonFile['isPrivateEvent'] ?? false;
+    this.hiddenCashPayment = jsonFile['hiddenCashPayment'] ?? false;
+    this.specialForm = jsonFile['specialForm'] ?? 0;
+    this.questionnaire = jsonFile['questionnaire'] ?? '';
+    this.questExplanation = jsonFile['questExplanation'] ?? "";
+    this.reservTypes = jsonFile['reservTypes'][0] ?? {};
   }
 
   Function(Map) get imagesFormJson => (Map jsonFile) {
