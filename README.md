@@ -1,16 +1,7 @@
-# tech
+This is A Flutter Challange Application consist of one screeon with InputForm
+App UI Screenshoots 
 
-A new Flutter application.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="https://github.com/mahmoud-araby/flutter_challenge/blob/master/Screenshot_2020-06-14-06-41-31-050_courses.araby.tech.jpg" alt="Smiley face" height="600" width="350">
+<img src="https://github.com/mahmoud-araby/flutter_challenge/blob/master/Screenshot_2020-06-14-06-41-49-170_courses.araby.tech.jpg" alt="Smiley face" height="600" width="350">
+<img src="https://github.com/mahmoud-araby/flutter_challenge/blob/master/Screenshot_2020-06-14-06-42-33-175_courses.araby.tech.jpg" alt="Smiley face" height="600" width="350">
+<img src="https://github.com/mahmoud-araby/flutter_challenge/blob/master/Screenshot_2020-06-14-06-42-40-495_courses.araby.tech.jpg" alt="Smiley face" height="350" width="600">
