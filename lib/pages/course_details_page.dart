@@ -35,40 +35,23 @@ class CourseDetailPage extends StatelessWidget {
 }
 
 class CoursePage extends StatelessWidget {
+  double platformHeight = 0;
+  double platformWidth = 0;
   @override
   Widget build(BuildContext context) {
+    if (MediaQuery.of(context).orientation == Orientation.portrait) {
+      platformHeight = MediaQuery.of(context).size.height;
+      platformWidth = MediaQuery.of(context).size.width - 23;
+    } else {
+      platformWidth = MediaQuery.of(context).size.height - 23;
+      platformHeight = MediaQuery.of(context).size.width;
+    }
     return Consumer<CourseController>(
       builder: (context, course, child) => RefreshIndicator(
         onRefresh: course.getCourseDetails,
         child: CustomScrollView(
           physics: NeverScrollableScrollPhysics(),
-          slivers: <Widget>[
-            SliverAppBar(
-              expandedHeight: 240,
-              flexibleSpace: FlexibleSpaceBar(
-                background: CourseImages(),
-              ),
-            ),
-            SliverFixedExtentList(
-              itemExtent: MediaQuery.of(context).size.height - 250,
-              delegate: SliverChildListDelegate([
-                SingleChildScrollView(
-                  child: Column(
-                    children: <Widget>[
-                      CourseHeading(),
-                      divider(),
-                      TrainerInfo(),
-                      divider(),
-                      AboutCourse(),
-                      divider(),
-                      CoursePrice(),
-                      ReservationButton(),
-                    ],
-                  ),
-                ),
-              ]),
-            ),
-          ],
+          slivers: checkPortrait(context) ? portraitMode() : landscapeMode(),
         ),
       ),
     );
@@ -82,4 +65,121 @@ class CoursePage extends StatelessWidget {
       ),
     );
   }
+
+  bool checkPortrait(BuildContext context) {
+    return MediaQuery.of(context).size.width < 400;
+  }
+
+  List<Widget> landscapeMode() {
+    return [
+      SliverAppBar(
+        backgroundColor: Colors.white,
+        expandedHeight: platformWidth,
+        flexibleSpace: FlexibleSpaceBar(
+          background: Row(
+            children: <Widget>[
+              Expanded(child: CourseImages()),
+              SingleChildScrollView(
+                child: Container(
+                  width: platformWidth + 23,
+                  child: Column(
+                    children: <Widget>[
+                      CourseHeading(),
+                      divider(),
+                      TrainerInfo(),
+                      divider(),
+                      AboutCourse(),
+                      divider(),
+                      CoursePrice(),
+                      ReservationButton(),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ];
+  }
+
+  List<Widget> portraitMode() {
+    return <Widget>[
+      SliverAppBar(
+        expandedHeight: 240,
+        flexibleSpace: FlexibleSpaceBar(
+          background: CourseImages(),
+        ),
+      ),
+      SliverFixedExtentList(
+        itemExtent: platformHeight - 250,
+        delegate: SliverChildListDelegate([
+          SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                CourseHeading(),
+                divider(),
+                TrainerInfo(),
+                divider(),
+                AboutCourse(),
+                divider(),
+                CoursePrice(),
+                ReservationButton(),
+              ],
+            ),
+          ),
+        ]),
+      ),
+    ];
+  }
 }
+//
+//class CoursePage extends StatelessWidget {
+//  @override
+//  Widget build(BuildContext context) {
+//    return Consumer<CourseController>(
+//      builder: (context, course, child) => RefreshIndicator(
+//        onRefresh: course.getCourseDetails,
+//        child: CustomScrollView(
+//          physics: NeverScrollableScrollPhysics(),
+//          slivers: <Widget>[
+//            SliverAppBar(
+//              expandedHeight: 240,
+//              flexibleSpace: FlexibleSpaceBar(
+//                background: CourseImages(),
+//              ),
+//            ),
+//            SliverFixedExtentList(
+//              itemExtent: MediaQuery.of(context).size.height - 250,
+//              delegate: SliverChildListDelegate([
+//                SingleChildScrollView(
+//                  child: Column(
+//                    children: <Widget>[
+//                      CourseHeading(),
+//                      divider(),
+//                      TrainerInfo(),
+//                      divider(),
+//                      AboutCourse(),
+//                      divider(),
+//                      CoursePrice(),
+//                      ReservationButton(),
+//                    ],
+//                  ),
+//                ),
+//              ]),
+//            ),
+//          ],
+//        ),
+//      ),
+//    );
+//  }
+//
+//  Widget divider() {
+//    return Padding(
+//      padding: const EdgeInsets.symmetric(vertical: DividerPadding),
+//      child: Divider(
+//        thickness: DividerThickness,
+//      ),
+//    );
+//  }
+//}
