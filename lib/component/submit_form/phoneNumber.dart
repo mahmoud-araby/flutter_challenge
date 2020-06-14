@@ -20,7 +20,7 @@ class PhoneNumber extends StatelessWidget {
   }
 
   String numberValidator(String value) {
-    if (value.length == 11) {
+    if (value.length > 9) {
       return null;
     }
     return 'Enter valid phone Number 01xxxxxxxxx';

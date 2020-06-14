@@ -46,6 +46,7 @@ const OrdinaryCost = "الحجز العادى";
 const Reservation = "قم بالحجز الآن";
 const Done = "تم الحجز بنجاح";
 const UnDone = "حاول فى وقت لاحق";
+const Thanks = 'نشكرك';
 
 ThemeData appTheme = ThemeData.light().copyWith(
   accentColor: Color(0xFF8A3CA1),

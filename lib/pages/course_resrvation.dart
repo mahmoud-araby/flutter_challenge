@@ -35,10 +35,13 @@ class ReservationForm extends StatelessWidget {
   }
 
   submitForm(BuildContext context) {
-    //  if (_submitKey.currentState.validate()) {
-    _submitKey.currentState.save();
-    Navigator.pop(context);
-    showDialog(context: context, builder: (context) => ConfirmSubmit());
-    //  }
+    if (_submitKey.currentState.validate()) {
+      _submitKey.currentState.save();
+      Navigator.pop(context);
+      showDialog(
+          barrierDismissible: false,
+          context: context,
+          builder: (context) => ConfirmSubmit());
+    }
   }
 }

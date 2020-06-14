@@ -22,6 +22,7 @@ class TrainerInfo extends StatelessWidget {
                 CircleAvatar(
                   radius: 22,
                   child: customImage(course.courseData.trainer.image),
+                  backgroundColor: appTheme.primaryColor,
                 ),
                 SizedBox(
                   width: 10,

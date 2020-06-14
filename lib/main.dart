@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) => MaterialApp(
         theme: appTheme,
         debugShowCheckedModeBanner: false,
-        title: 'Courses',
+        title: 'Safari',
         home: Directionality(
             textDirection: TextDirection.rtl, child: CourseDetailPage()),
       ),

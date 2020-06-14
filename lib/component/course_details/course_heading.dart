@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:tech/backend/controller/courses_controller.dart';
@@ -30,12 +32,11 @@ class CourseHeading extends StatelessWidget {
             Padding(
               padding: CategoryPadding,
               child: textWithIcon(
-                  Icons.calendar_today,
-                  DateFormat('E، dd mmm، kk:mm')
-                      .format(course.courseData.date)
-                      .toString()),
+                MaterialCommunityIcons.calendar_month_outline,
+                getFormatedDate(course.courseData.date),
+              ),
             ),
-            textWithIcon(Icons.pin_drop, course.courseData.address),
+            textWithIcon(Octicons.pin, course.courseData.address),
           ],
         ),
       ),
@@ -58,5 +59,15 @@ class CourseHeading extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  String getFormatedDate(DateTime time) {
+    String formatted = '';
+    initializeDateFormatting("ar_SA", null);
+    String marker = DateFormat('a').format(time) == 'PM' ? 'مساءاً' : 'صباحاً';
+    String formattedTime = DateFormat('h:mm ').format(time);
+    var formatter = DateFormat('EEEE, d MMMM, ', 'ar_SA');
+    formatted = formatter.format(time);
+    return formatted + formattedTime + marker;
   }
 }

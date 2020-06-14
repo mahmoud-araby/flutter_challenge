@@ -35,7 +35,9 @@ dependencies:
   cached_network_image: ^2.2.0+1
   carousel_pro: ^1.0.0
   intl: ^0.16.1
-  easy_localization: ^2.3.2
+  intl_translation: ^0.17.9
+  flutter_icons: ^1.1.0
+
 
 
 

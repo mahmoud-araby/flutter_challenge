@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tech/style.dart';
 
 import './progress.dart';
 
@@ -16,7 +17,10 @@ customImage(String mediaUrl) {
       },
       errorWidget: (context, url, error) {
         return Center(
-          child: Icon(Icons.error),
+          child: Icon(
+            Icons.error,
+            color: appTheme.accentColor,
+          ),
         );
       },
     ),

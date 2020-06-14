@@ -26,7 +26,7 @@ class ConfirmSubmit extends StatelessWidget {
 
 Widget submitSuccess(BuildContext context, bool done) {
   return Container(
-    height: 200,
+    height: 250,
     width: 150,
     child: Column(
       children: <Widget>[
@@ -104,6 +104,14 @@ Widget submitSuccess(BuildContext context, bool done) {
         Text(
           done ? Done : UnDone,
           style: ConfirmationText,
+        ),
+        RaisedButton(
+          color: appTheme.accentColor,
+          onPressed: () => Navigator.pop(context),
+          child: Text(
+            Thanks,
+            style: ButtonStyle,
+          ),
         ),
       ],
     ),
